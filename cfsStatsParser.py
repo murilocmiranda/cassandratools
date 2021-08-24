@@ -1,7 +1,3 @@
-#pip install more-itertools
-#pip install numpy
-#pip install pandas
-#pip install openpyxl  
 import os
 import re
 import sys
@@ -47,7 +43,6 @@ def main():
 
     # Export CSV
     export_to_excel()
-    
 
 def build_lists():
     global keyspaces
@@ -68,17 +63,22 @@ def build_lists():
     tables = np.copy(tables_header)
 
 def fill_keyspaces(content):
+    logging.debug('FILL KEYSPACES: Starting the function.')
+    logging.debug('FILL KEYSPACES: Content:\n'+content)
     global keyspaces
+
+    stack = []
+    newRow = []
 
     lines = content.split('\n')
     lines = iter(lines)
-    
-    stack = []
-    newRow = []
+
     for line in lines: 
         body = line.lstrip('\t'); 
         level = len(line) - len(body); 
         stack[level:] = (body,)
+
+        logging.debug('FILL KEYSPACES: Processing line....\n'+str(stack))
 
         # Looking for keyspaces
         if len(stack) == 1 and 'Keyspace : ' in stack[0]:
@@ -118,7 +118,10 @@ def fill_keyspaces(content):
             newRow[5] = pendingFlushes
             keyspaces = np.vstack([keyspaces, newRow])
 
+    logging.debug('FILL KEYSPACES: Finalizing the function.')
+
 def fill_tables(content):
+    logging.debug('TABLE INFO: Starting the function.')
     global tables
     global tables_header
 
@@ -180,6 +183,8 @@ def fill_tables(content):
                 newRow[colIndex] = str(convert_to_mib(propertyValue))+' MiB'
             else:
                 newRow[colIndex] = propertyValue
+
+    logging.debug('TABLE INFO: Finalizing the function.')
             
 def update_table_count(keyspaceName, TableCount):
     # Updates table count per keyspace
