@@ -33,8 +33,8 @@ You can use the option `-h` to get help about the sintax and `-d` to enable de d
 ### CQL Schema parser
 This script compares a `cassandra.yaml` file with the default one.
 
-cassandraVersion  Cassandra version (1.0, 1.1, 1.2, 2.0, 2.1, 2.2, 3.0, 3.11)
-inputFile         Path to cassandra.yaml
+- cassandraVersion - Cassandra version (1.0, 1.1, 1.2, 2.0, 2.1, 2.2, 3.0, 3.11)
+- inputFile - Path to cassandra.yaml
   
 ```bash
 cassandraYamlComparer.py [-h] [-o] [-d] cassandraVersion inputFile
