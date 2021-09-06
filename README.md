@@ -28,3 +28,16 @@ cqlSchemaParser.py [-h] [-d] inputFile
 ```
 
 You can use the option `-h` to get help about the sintax and `-d` to enable de debug mode.
+
+
+### CQL Schema parser
+This script compares a `cassandra.yaml` file with the default one.
+
+cassandraVersion  Cassandra version (1.0, 1.1, 1.2, 2.0, 2.1, 2.2, 3.0, 3.11)
+inputFile         Path to cassandra.yaml
+  
+```bash
+cassandraYamlComparer.py [-h] [-o] [-d] cassandraVersion inputFile
+```
+
+You can use the option `-h` to get help about the sintax and `-d` to enable de debug mode.
