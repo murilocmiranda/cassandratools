@@ -77,8 +77,6 @@ def main():
     f.write(pretty_json)
     f.close()
 
-    #print(pretty_json)
-
 
 def yaml_as_dict(my_file):
     my_dict = {}
