@@ -1,3 +1,4 @@
+deepdiff==5.5.0
 more-itertools==8.8.0
 numpy==1.21.2
 openpyxl==3.0.7
